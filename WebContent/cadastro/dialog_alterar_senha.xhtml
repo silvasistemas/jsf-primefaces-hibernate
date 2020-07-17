@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+	 
+	<h:form id="formCadastroDialog" prependId="false">
+		 <p:panel>
+		 	<h:panelGrid id="gridAltSenhaDialod" columns="3">
+		 		<p:column>
+		 			<p:row>
+		 				<h:outputLabel value="Senha Atual: " for="senhaAtualDialog"
+		 				 id="labelSenhaAtual" style="width:350px;"/>
+		 			</p:row>
+		 		</p:column>
+		 		
+		 		
+		 		<p:column>
+		 			<p:row>
+		 				<p:password id="senhaAtualDialog"
+		 				 maxlength="20" required="true" 
+		 				 value="#{entidadeBeanView.entidadeAtualizaSenhaBean.senhaAtual}"
+		 				 requiredMessage="Informe o campo senha atual"/>
+		 			</p:row>
+		 		</p:column>
+		 		
+		 		
+		 		<p:column>
+					<p:row>
+						<p:message for="senhaAtualDialog" />
+					</p:row>
+			  </p:column>
+			  
+			  
+			  <p:column>
+				<p:row>
+					<h:outputLabel for="senhaNovaDialog" value="Nova senha : "
+						id="labelSenhaDialog" style="width:350px;" />
+				</p:row>
+			</p:column>
+			
+			
+			<p:column>
+				<p:row>
+					<p:password id="senhaNovaDialog" styleClass="estiloIdCastro"
+						maxlength="20"
+						value="#{entidadeBeanView.entidadeAtualizaSenhaBean.novaSenha}"
+						required="true" requiredMessage="Informe o campo nova senha." />
+				</p:row>
+			</p:column>
+			
+			<p:column>
+				<p:row>
+					<p:message for="senhaNovaDialog" />
+				</p:row>
+			</p:column>
+		 		
+		 	</h:panelGrid>
+		 	
+		 	<p:column>
+				<p:row>
+					<h:outputLabel for="confirmeDialog" value="Confirme : "
+						id="labelConfDialog" style="width:350px;" />
+				</p:row>
+			</p:column>
+			<p:column>
+				<p:row>
+					<p:password id="confirmeDialog" styleClass="estiloIdCastro"
+						maxlength="20"
+						value="#{entidadeBeanView.entidadeAtualizaSenhaBean.confirmaSenha}"
+						required="true" requiredMessage="Confirme a nova senha." />
+				</p:row>
+			</p:column>
+			<p:column>
+				<p:row>
+					<p:message for="confirmeDialog" />
+				</p:row>
+			</p:column>
+		 	
+		 </p:panel>
+		 
+		 <p:commandButton value="Salvar" ajax="true" 
+		 partialSubmit="true" 
+		 action="#{entidadeBeanView.updateSenha}" 
+		 process="@this, @form"
+		 immediate="false"
+		  style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+		 />
+		 
+		 
+		 <p:commandButton value="Fechar" ajax="true" 
+		 id="buttonFecharDSenha" onclick="alterarSenhaDialog.hide();" 
+		 style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"/>
+	</h:form>
+	
+</html>
